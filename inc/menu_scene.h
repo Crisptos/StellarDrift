@@ -26,7 +26,8 @@ private:
     Sound bg_music;
 
     // UI
-    Font menu_font;
+    Font button_font;
+    Font title_font;
     // Title
     Vector2 title_dimensions;
     // New Game

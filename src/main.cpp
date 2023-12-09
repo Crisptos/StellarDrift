@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 
 #include "menu_scene.h"
 #include "character_scene.h"
@@ -38,10 +39,19 @@ void NoTransitionToScreen(GameScene scene)
     case MENU:
         main_menu.EndScene();
         break;
+    case CHARACTERCREATOR:
+        character_creator.EndScene();
+        break;
+    case OPTIONS:
+        option_menu.EndScene();
+        break;
     }
 
     switch (scene)
     {
+    case MENU:
+        main_menu.StartScene();
+        break;
     case CHARACTERCREATOR:
         character_creator.StartScene();
         break;
@@ -50,6 +60,7 @@ void NoTransitionToScreen(GameScene scene)
         break;
     }
 
+    std::cout << "Changing scene to " << scene << std::endl;
     current_scene = scene;
 }
 
@@ -93,8 +104,22 @@ void UpdateDrawFrame()
 
         case CHARACTERCREATOR:
             character_creator.UpdateScene();
+            // Sub Loop: check if the current scene has indicated to change to another scene
+            switch (character_creator.IsFinishedScene())
+            {
+            case MENU:
+                NoTransitionToScreen(MENU);
+                break;
+            }
         case OPTIONS:
             option_menu.UpdateScene();
+            // Sub Loop: check if the current scene has indicated to change to another scene
+            switch (option_menu.IsFinishedScene())
+            {
+            case MENU:
+                NoTransitionToScreen(MENU);
+                break;
+            }
         }
     }
     else
@@ -154,6 +179,9 @@ int main(void)
         break;
     case CHARACTERCREATOR:
         character_creator.EndScene();
+        break;
+    case OPTIONS:
+        option_menu.EndScene();
         break;
     }
 
