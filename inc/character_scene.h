@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "scene.h"
+#include "character_info.h"
 
 #define NAME_LIMIT 18
 
@@ -19,6 +20,9 @@ public:
     GameScene IsFinishedScene();
 
     GameScene status;
+
+    // Not inherited from interface
+    Player GetPlayerInfo();
 
 private:
 

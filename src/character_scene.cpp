@@ -95,7 +95,7 @@ void CharacterScene::DrawScene()
     DrawRectangleLinesEx(start_container, 1.0, start_color);
     DrawTextEx(button_font, "Start", Vector2{(SCREEN_WIDTH / 1.15f) - (start_dimensions.x / 2), (SCREEN_HEIGHT / 1.25f)}, 20, 1, start_color);
     // Name Input Label
-    DrawTextEx(label_font, "Enter Your Name", Vector2{(SCREEN_WIDTH/2) - (name_label_dimensions.x/2), SCREEN_HEIGHT/3.5f}, 24, 1, WHITE);
+    DrawTextEx(label_font, "Enter Your Name", Vector2{(SCREEN_WIDTH / 2) - (name_label_dimensions.x / 2), SCREEN_HEIGHT / 3.5f}, 24, 1, WHITE);
     // Name Input Field
     DrawRectangleLinesEx(name_input_container, 1.0, name_input_color);
     DrawTextEx(button_font, player_name.c_str(), Vector2{(SCREEN_WIDTH / 2) - (name_input_dimensions.x / 2), SCREEN_HEIGHT / 3}, 20, 1, name_input_color);
@@ -113,4 +113,12 @@ void CharacterScene::EndScene()
 GameScene CharacterScene::IsFinishedScene()
 {
     return status;
+}
+
+Player CharacterScene::GetPlayerInfo()
+{
+    return Player{
+        player_name,
+        0
+    };
 }

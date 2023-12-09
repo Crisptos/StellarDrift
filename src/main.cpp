@@ -1,11 +1,13 @@
 #include "menu_scene.h"
 #include "character_scene.h"
 #include "option_scene.h"
+#include "gameplay_scene.h"
 
 // Global Extern Fields
 MenuScene main_menu;
 CharacterScene character_creator;
 OptionScene option_menu;
+GameplayScene game;
 
 // Local Fields
 // Scene state management
@@ -42,6 +44,9 @@ void NoTransitionToScreen(GameScene scene)
     case OPTIONS:
         option_menu.EndScene();
         break;
+    case GAMESCREEN:
+        game.EndScene();
+        break;
     }
 
     switch (scene)
@@ -54,6 +59,9 @@ void NoTransitionToScreen(GameScene scene)
         break;
     case OPTIONS:
         option_menu.StartScene();
+        break;
+    case GAMESCREEN:
+        game.StartScene();
         break;
     }
 
@@ -110,6 +118,7 @@ void UpdateDrawFrame()
                 NoTransitionToScreen(MENU);
                 break;
             case GAMESCREEN:
+                game.SetPlayerInfo(character_creator.GetPlayerInfo());
                 NoTransitionToScreen(GAMESCREEN);
                 break;
             default:
@@ -127,6 +136,10 @@ void UpdateDrawFrame()
             default:
                 break;
             }
+            break;
+        case GAMESCREEN:
+            game.UpdateScene();
+            // Sub Loop: check if the current scene has indicated to change to another scene
             break;
         }
     }
@@ -149,6 +162,10 @@ void UpdateDrawFrame()
 
     case OPTIONS:
         option_menu.DrawScene();
+        break;
+
+    case GAMESCREEN:
+        game.DrawScene();
         break;
 
     default:

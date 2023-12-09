@@ -5,12 +5,15 @@ project(StellarDrift VERSION 1.0.0 LANGUAGES C CXX ASM)
 
 # Source
 set(SOURCES
+src/gameplay_scene.cpp
 src/option_scene.cpp
 src/character_scene.cpp
 src/menu_scene.cpp 
 src/main.cpp
 )
 set(HEADERS
+inc/gameplay_scene.h
+inc/character_info.h
 inc/option_scene.h
 inc/character_scene.h
 inc/menu_scene.h
