@@ -29,7 +29,7 @@ private:
     Vector2 back_dimensions;
     Color back_color;
     // Apply Button
-    Rectangle apply_container = Rectangle{SCREEN_WIDTH / 1.25f - 50, SCREEN_HEIGHT / 1.25f, BTN_WIDTH, BTN_HEIGHT};
+    Rectangle apply_container = Rectangle{SCREEN_WIDTH / 1.15f - 50, SCREEN_HEIGHT / 1.25f, BTN_WIDTH, BTN_HEIGHT};
     Vector2 apply_dimensions;
     Color apply_color;
 };

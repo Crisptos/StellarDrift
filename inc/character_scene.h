@@ -2,6 +2,8 @@
 #include <string>
 #include "scene.h"
 
+#define NAME_LIMIT 18
+
 class CharacterScene : public Scene
 {
 public:
@@ -19,19 +21,27 @@ public:
     GameScene status;
 
 private:
+
     // Asset fields
     Texture2D c_menu_bg;
 
     // UI
     Font button_font;
+    Font label_font;
     // Back Button
     Rectangle back_container = Rectangle{SCREEN_WIDTH / 8 - 50, SCREEN_HEIGHT / 1.25f, BTN_WIDTH, BTN_HEIGHT};
     Vector2 back_dimensions;
     Color back_color;
     // Start Button
-    Rectangle start_container = Rectangle{SCREEN_WIDTH / 1.25f - 50, SCREEN_HEIGHT / 1.25f, BTN_WIDTH, BTN_HEIGHT};
+    Rectangle start_container = Rectangle{SCREEN_WIDTH / 1.15f - 50, SCREEN_HEIGHT / 1.25f, BTN_WIDTH, BTN_HEIGHT};
     Vector2 start_dimensions;
     Color start_color;
+    // Name Input Field
+    Rectangle name_input_container = Rectangle{SCREEN_WIDTH/2 - 100, SCREEN_HEIGHT/3, TEXT_FIELD_WIDTH, TEXT_FIELD_HEIGHT};
+    Vector2 name_input_dimensions;
+    Color name_input_color;
+    Vector2 name_label_dimensions;
+
 
     // Character Creation Data
     std::string player_name;

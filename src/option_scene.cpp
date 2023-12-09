@@ -57,7 +57,7 @@ void OptionScene::DrawScene()
     DrawTextEx(button_font, "Back", Vector2{(SCREEN_WIDTH / 8) - (back_dimensions.x / 2), (SCREEN_HEIGHT / 1.25f)}, 20, 1, back_color);
     // Apply Button
     DrawRectangleLinesEx(apply_container, 1.0, apply_color);
-    DrawTextEx(button_font, "Apply", Vector2{(SCREEN_WIDTH / 1.25f) - (apply_dimensions.x / 2), (SCREEN_HEIGHT / 1.25f)}, 20, 1, apply_color);
+    DrawTextEx(button_font, "Apply", Vector2{(SCREEN_WIDTH / 1.15f) - (apply_dimensions.x / 2), (SCREEN_HEIGHT / 1.25f)}, 20, 1, apply_color);
 }
 
 void OptionScene::EndScene()
