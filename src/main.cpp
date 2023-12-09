@@ -1,6 +1,3 @@
-#include <vector>
-#include <iostream>
-
 #include "menu_scene.h"
 #include "character_scene.h"
 #include "option_scene.h"
@@ -99,6 +96,8 @@ void UpdateDrawFrame()
             case QUIT:
                 exit_window = true;
                 break;
+            default:
+                break;
             }
             break;
 
@@ -110,7 +109,13 @@ void UpdateDrawFrame()
             case MENU:
                 NoTransitionToScreen(MENU);
                 break;
+            case GAMESCREEN:
+                NoTransitionToScreen(GAMESCREEN);
+                break;
+            default:
+                break;
             }
+            break;
         case OPTIONS:
             option_menu.UpdateScene();
             // Sub Loop: check if the current scene has indicated to change to another scene
@@ -119,7 +124,10 @@ void UpdateDrawFrame()
             case MENU:
                 NoTransitionToScreen(MENU);
                 break;
+            default:
+                break;
             }
+            break;
         }
     }
     else

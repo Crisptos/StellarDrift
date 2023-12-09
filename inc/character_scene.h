@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include "scene.h"
 
 class CharacterScene : public Scene
@@ -31,6 +32,9 @@ private:
     Rectangle start_container = Rectangle{SCREEN_WIDTH / 1.25f - 50, SCREEN_HEIGHT / 1.25f, BTN_WIDTH, BTN_HEIGHT};
     Vector2 start_dimensions;
     Color start_color;
+
+    // Character Creation Data
+    std::string player_name;
 };
 
 // Globally accessible to main
