@@ -11,6 +11,8 @@ CharacterScene::~CharacterScene()
 void CharacterScene::StartScene()
 {
     status = UNDEFINED;
+    has_name = false;
+    name_warning = false;
     c_menu_bg = LoadTexture("assets/sprites/c_bg.png");
     button_font = LoadFontEx("assets/fonts/VT323.ttf", 20, 0, 0);
     label_font = LoadFontEx("assets/fonts/VT323.ttf", 24, 0, 0);
@@ -44,7 +46,10 @@ void CharacterScene::UpdateScene()
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
             start_color = PRESSED;
-            status = GAMESCREEN;
+            if (has_name)
+                status = GAMESCREEN;
+            else
+                name_warning = true;
         }
         else
             start_color = FOCUSED;
@@ -81,6 +86,16 @@ void CharacterScene::UpdateScene()
         name_input_color = NORMAL;
         SetMouseCursor(MOUSE_CURSOR_DEFAULT);
     }
+
+    // Update warning label and timer
+    if (player_name.size() > 0)
+        has_name = true;
+    else
+        has_name = false;
+
+    UpdateTimer(&label_timer); // Not working right now
+    if (TimerDone(label_timer))
+        name_warning = false;
 }
 
 void CharacterScene::DrawScene()
@@ -96,6 +111,12 @@ void CharacterScene::DrawScene()
     DrawTextEx(button_font, "Start", Vector2{(SCREEN_WIDTH / 1.15f) - (start_dimensions.x / 2), (SCREEN_HEIGHT / 1.25f)}, 20, 1, start_color);
     // Name Input Label
     DrawTextEx(label_font, "Enter Your Name", Vector2{(SCREEN_WIDTH / 2) - (name_label_dimensions.x / 2), SCREEN_HEIGHT / 3.5f}, 24, 1, WHITE);
+    // Draw the warning that the player needs a name if conditions are true
+    if (name_warning)
+    {
+        // StartTimer(&label_timer, 5.0);
+        DrawTextEx(label_font, "Please enter a name...", Vector2{SCREEN_WIDTH / 2.2, SCREEN_HEIGHT / 3}, 24, 1, WHITE);
+    }
     // Name Input Field
     DrawRectangleLinesEx(name_input_container, 1.0, name_input_color);
     DrawTextEx(button_font, player_name.c_str(), Vector2{(SCREEN_WIDTH / 2) - (name_input_dimensions.x / 2), SCREEN_HEIGHT / 3}, 20, 1, name_input_color);
@@ -119,6 +140,5 @@ Player CharacterScene::GetPlayerInfo()
 {
     return Player{
         player_name,
-        0
-    };
+        0};
 }

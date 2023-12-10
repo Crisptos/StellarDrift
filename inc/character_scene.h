@@ -45,7 +45,12 @@ private:
     Vector2 name_input_dimensions;
     Color name_input_color;
     Vector2 name_label_dimensions;
+    // Name Warning
+    Timer label_timer;
 
+    // Character Creation Data State Management
+    bool has_name;
+    bool name_warning;
 
     // Character Creation Data
     std::string player_name;

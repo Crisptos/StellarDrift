@@ -208,6 +208,9 @@ int main(void)
     case OPTIONS:
         option_menu.EndScene();
         break;
+    case GAMESCREEN:
+        game.EndScene();
+        break;
     }
 
     CloseWindow();

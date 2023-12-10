@@ -8,7 +8,8 @@ set(SOURCES
 src/gameplay_scene.cpp
 src/option_scene.cpp
 src/character_scene.cpp
-src/menu_scene.cpp 
+src/menu_scene.cpp
+src/timer.cpp 
 src/main.cpp
 )
 set(HEADERS
@@ -18,7 +19,7 @@ inc/option_scene.h
 inc/character_scene.h
 inc/menu_scene.h
 inc/scene.h
-inc/config.h
+inc/util.h
 vendor/raylib.h
 )
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
