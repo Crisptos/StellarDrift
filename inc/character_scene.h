@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include "scene.h"
-#include "character_info.h"
+#include "gameplay/player.h"
 
 #define NAME_LIMIT 18
 

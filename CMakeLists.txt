@@ -5,7 +5,10 @@ project(StellarDrift VERSION 1.0.0 LANGUAGES C CXX ASM)
 
 # Source
 set(SOURCES
-src/gameplay_scene.cpp
+src/gameplay/tile.cpp
+src/gameplay/world_gen.cpp
+src/gameplay/gameplay_scene.cpp
+src/gameplay/player.cpp
 src/option_scene.cpp
 src/character_scene.cpp
 src/menu_scene.cpp
@@ -13,8 +16,11 @@ src/timer.cpp
 src/main.cpp
 )
 set(HEADERS
-inc/gameplay_scene.h
-inc/character_info.h
+inc/gameplay/tile.h
+inc/gameplay/entity.h
+inc/gameplay/world_gen.h
+inc/gameplay/gameplay_scene.h
+inc/gameplay/player.h
 inc/option_scene.h
 inc/character_scene.h
 inc/menu_scene.h

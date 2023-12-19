@@ -138,7 +138,6 @@ GameScene CharacterScene::IsFinishedScene()
 
 Player CharacterScene::GetPlayerInfo()
 {
-    return Player{
-        player_name,
-        0};
+    Player player(player_name.c_str(), Vector2{0,0}, 10);
+    return player;
 }

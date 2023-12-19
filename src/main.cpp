@@ -1,7 +1,7 @@
 #include "menu_scene.h"
 #include "character_scene.h"
 #include "option_scene.h"
-#include "gameplay_scene.h"
+#include "gameplay/gameplay_scene.h"
 
 // Global Extern Fields
 MenuScene main_menu;
